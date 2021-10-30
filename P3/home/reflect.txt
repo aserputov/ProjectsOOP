@@ -1,0 +1,42 @@
+1.The reason for specializing the operator+=() member function
+If we just use our operator the same way as it was before we will work just with int variables. But for our program, as we have templates we need to think about string too. So we use it to insert a comma to separate the string. 
+template<>
+PairSummable<std::string,std::string>& PairSummable<std::string, std::string>::operator +=(const PairSummable& source) {
+  if (this->key() == source.key()) {
+    std::string temp;
+    if(this->value() == "") {
+      temp = source.value();
+    }else {
+     temp = this->value()+ ", " + source.value();
+    }
+    PairSummable tempObj(this->key(), temp);
+    *this = tempObj;
+  }
+  return *this;
+}
+
+2.The reason for specializing in the initial value for a summation.
+We need to specialize it because the parameter can rather take a string or int value and to be clear with this we made safe empty value for it.  
+template<>
+std::string PairSummable<std::string, std::string>::initial = "";
+template<>
+int PairSummable<std::string,int>::initial = 0;
+For a string, we did an empty "" string.
+For an int, we did 0.
+
+3. The reason for defining the class variable outside the class definition.
+This reason is connected to the topic of the external and internal linkage which we learned in lab 1. (static keyword is related to internal linkage). In our program, we define our variable as a global variable so it will be visible for other scopes. This variable is set outside the definition so it's available to the whole program because it has global scope.
+template<typename K, typename V>
+size_t PairSummable<K, V>::field_w = 0u;
+
+4.Explain in the reflection why we do not split a module into *.h and *.cpp like you did in the previous workshops.
+Templates give us an opportunity to work with different types. So we have different codes depends on parameters and e.t.c. The compiler needs to have access to the implementation of the methods and wouldn't be able to instantiate the template if these implementations were not in the header, they wouldn't be accessible. 
+
+
+
+
+5.Explain in the reflection what = initial in the prototype means
+The default parameter will take the value 0 or  "" if the value of the parameter is empty. It's like some kind of a safe empty state.
+
+My problems: I spend a lot of days doing this lab and the hardest was with  +=operator and with specialization.  And with  operator<<. 
+I did it like a "friend" in p1 and after changing it, because documents tell that it suppose to work as a free helper.

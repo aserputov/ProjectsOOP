@@ -1,0 +1,9 @@
+1.The difference between the implementations of composition and aggregation.
+In both implementations of aggregation and composition objects, one class owns the object of another class. For composition, a relationship is stronger than an aggregation relationship. In composition, a child object class cannot exist independently of the parent class. The composition is responsible for the creation/destruction of its objects, but aggregation isn't. In aggregation, relationship objects may exist independently. In our lab, we had three modules: Reservation, Restaurant and Confirmations. 
+The Restaurant creates reservation. Confirmations depend and exist because of reservations, but not create confirmation and the same vice versa. Confirmation doesn't need to exist because reservation exists.
+In our code relationship between the reservation module and restaurant, the module represents a composition. The relationship between the reservation module and confirmation module represents Aggregation. 
+
+2.The difference between the implementations of move and copy functions in composition and aggregation.
+Actually, the implementation is pretty much the same for both for restaurant module and confirmation module. Except for one module(confirmationsender) it depended on operators. And restaurant module depended on construction.
+
+My problems: In this workshop, I spend some time on working with whitespaces in the Reservation module and find a feature like find_last_not_of(' '). And I found operator+= a little bit tough in the confirmation module. I learned new things about the move and copy constructors while saw how to allocate and deallocate memory for our arrays in different modules.

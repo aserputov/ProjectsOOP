@@ -1,0 +1,9 @@
+1.
+We declare our vector like std::vector<Vehicle*> m_vehicles in module Autoshop.h.Vector allocates/deallocate memory automatically, but in our code, we store pointers. These pointers point to an object and we need to allocate memory for. At the end of the program run time vector will clean memory, but not deallocate memory for pointers. That is why we need to deallocate memory for each object of the vector in our module.
+2.
+If something goes wrong when we building an object from input file and type of vehicle will be unknown it will show std::cout << "Unrecognized record type: [" << as << "]" << std::endl;If the record will contain invalid data it will send an error std::cout << "Invalid record!" << std::endl; I used small help with an idea how to find another solution. We can define a variable in car module which will hold a value to indicate an error that occurred during an operation on an object. And after we can create something like enum in our Vehicle module which will give different text errors depends on value.   
+
+3.
+Firstly if I will try to use astd::list<sdds::Vehicle> and std::vector<sdds::Vehicle> without *, it will store objects and what will reflect on storing objects in the same vector. The second is that the vehicle class is an abstract class that can not be instantiated. This making it difficult to add elements to the container and storing value instances would not allow dynamic sending to take place. 
+
+My problems: I struggle a little bit with the constructor in Car module, because before we worked just with records to clean them from spaces and find strings, but in this workshop we had file and with some additional features, but after some time spends in google, I did it.

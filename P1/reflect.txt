@@ -1,0 +1,24 @@
+Workshop 1 - Linkage, Storage Duration, Namespaces, and OS Interface
+the difference between internal and external linkage using examples from your code
+what are static variables and how were they useful in this workshop.
+the changes that you made in upgrading your Event class.
+In this workshop, we learned about 3 topics, which I include above.
+
+	1.1 Internal linkage was created and used to work just only in the scope of one a translation unit. I used this kind of method in my display() function by creating (static int count = 1 ;) as a counter for new events.
+And as an addition, I read that we can use anonymous namespaces which are unreachable from other translation units.
+	
+	1.2 External linkage used to work for global(not in only one scope) code. We can access it through the whole program. In my workshop it was(Extern unsigned int g_sysClock; ). I created it in my event header file, but if I left all just like that there wasn't any implementation of this variable. (We can compare the Extern variable with the prototype of the function, it gives us symbol information and on a stage of linker it helps to connect, but we need to connect with something that is why I add&initialize new variable unsigned int g_sysClock = 0 in the event.cpp
+
+2. The static keyword can be used in three main contexts:
+inside a function;
+inside a class definition;
+before a global variable within a file that makes up a multi-file program.
+The way how we did in the workshop was to insert it inside a function. It works in a way that after a variable has been initialized, it remains in memory until the end of the program. A variable holds its value until the program ends. I used a static variable to record the number of times the function was called by simply adding the lines static int count = 0; and count ++; into a function. Whenever the function is called, the count will have the last value given to it.
+The static keyword prevents the variable from being reinitialized.
+
+3. Before in part one we created a C style null-terminated string of up to 128 characters but it was limited. In part two we changed to C style null-terminated string any size. And I change from Static Memory to Dynamically allocated memory for a string. I used operators new and delete to use a memory.
+
+Problems. 
+---------
+The first problem was with my output. I initialized my g_clock function in the display function, but it was wrong. I had problems with the extern, but after I watched the tutorial I found that I need to initialize variable in the event.cpp too.
+Had some tough time with setw and setfill to make an indentation. I had a lot of memory leaks, but I saw the message that we need to add copy constructor&operator and after all went better.

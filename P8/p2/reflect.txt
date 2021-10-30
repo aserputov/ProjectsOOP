@@ -1,0 +1,13 @@
+My problems and solution: There are three types of smart pointers in c++ as we know:unique_ptr,shared_ptr,weak_ptr. And in this workshop, I used the first type unique_ptr. 
+2. Let's start from raw pointers where we use the keyword 'New' to allocates memory on a heap and the keyword 'delete' which free that memory. 
+Smart pointers were created to automate that process. In smart pointers, we almost never ever call new or delete.  It's just a wrapper around a real raw pointer. Based on that smart pointer we use, it will be free at some point. 
+First type of smart poiner in my code as   
+unique_ptr<Product> pr(new Product(desc[i].desc, price[j].price)); (we included <memory> and template argument as Product)
+Unique pointers or 'scoped pointers', which means when it will go out of scope it will will be destroyed. 
+We can't copy unique pointers because basically if we will copy it will point to the same block of memory. And then one dies, it will three memory. So the second will point to the block which was freed.
+To raw pointer we need to use different syntax is like 
+Product *nPr = new Product(desc[i].desc, price[o].price);
+delete nPr;
+nPr = nullptr;
+here I allocated memory on a heap for my object which has variables price and description.
+My problems with other things were just void validate function there I stuck with an exception because tried to use runtime_error exception. And we will have a memory leak(because we never deallocate our raw pointer) in our program, but my friend gave me an idea that we can use try catch  construction to check and deallocate memory this way.

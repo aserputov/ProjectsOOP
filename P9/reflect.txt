@@ -1,0 +1,21 @@
+Binary files are read and write as bytes so this makes them smaller than the text files.
+ std::ofstream fl(file,std::ios::binary|ios::out); for wtiting in the backup() function
+ std::ifstream fl(file,std::ios::binary|ios::in);  for reading in the restore() function 
+in input and out ouput are much faster with binary files.
+Speed is important in our program.
+2.
+Bind is a mostly deprecated function that does partial function application.
+And we can think of it as an implicit parameter. Or we can think of this like bind needs to call our member function like something->your_member(). Lambdas are usually better and are faster, but bind was a requirement.
+thread first(bind(converter, text, key, nbytes / 2, Cryptor()))
+thread second(bind(converter, text + nbytes / 2, key, nbytes - (nbytes / 2), Cryptor()));
+I created threads that then run the functions like an argument in these lines of the code above which was in our "code" function. The use of bind is more clearer code and less typing.
+3.
+ thread first(bind(converter, text, key, nbytes / 2, Cryptor()));
+ thread second(bind(converter, text + nbytes / 2, key, nbytes - (nbytes / 2), Cryptor()));
+    first.join();
+    second.join();
+ These lines of code shows how did I use multi threading in this project. 
+And we use bind there to work with encryption/decryption in our project.
+Multiple numbers of threadings allow our CPU to run multiple numbers of processes at the same time. This helps us to make tasks cheaper and saving time. Improving our code speed and maximize the power of our computer.
+
+My problems: Opening, reading, and writing from files were all ok. I had some small problems in function code with encrypting, but all went well after few cpp ref pages.

@@ -1,0 +1,59 @@
+The reason for the significant time difference between the copy and move operations
+I will try to explain my code step by step to show the real reason why there is a significant time difference copy&move operations.
+This is how I did the copy constructor and copy assignment operator. 
+
+RecordSet::RecordSet(const RecordSet& src) {
+    n_elements = nullptr;
+    *this = src; // calls assignment operator
+  }
+
+RecordSet& RecordSet::operator=(const RecordSet& src) {
+    if (this != &src) { // check for self-assignment
+      num_stored=src.num_stored;
+      delete[] n_elements;
+      if(src.n_elements != nullptr){
+        n_elements = new string[num_stored];
+          for (size_t i = 0; i < num_stored; i++){
+            n_elements[i] = src.n_elements[i];
+          }
+      }else{
+        n_elements = nullptr;
+      }
+    }
+    return *this;
+  }
+Here I used shallow and deep copy. 
+Shallow copy here is num_stored=src.num_stored; 
+And deep copy I used for string n_elements(my private variable). I allocated memory for it.
+
+And here is our problem. The reason is that to copy a string we need to allocate memory on the heap. Why can't we just move it to our string?
+After in part 2 of the workshop I code move constructor and move operator. 
+RecordSet::RecordSet(RecordSet&& src)noexcept{
+    *this =move(src);
+  }
+  RecordSet& RecordSet::operator=(RecordSet&& src)noexcept{
+   if (this != &src) { // check for self-assignment
+     n_elements = src.n_elements;
+     num_stored = src.num_stored;
+      
+     src.num_stored = 0;
+     src.n_elements = nullptr;
+   }
+  return *this;
+  }
+Move constructor takes in rvalue meaning temporary. 
+In the move operator,  variable num_stored still will copy the same way. 
+num_stored = src.num_stored;
+But for our string, we will simple assigned the pointer.
+n_elements = src.n_elements;
+Instead of allocating, we just pointing it to the same block of data. But here we have a problem with copy constructor&operator. So I'm solving it by assigned  
+src.num_stored = 0;
+src.n_elements = nullptr;
+We basically created the hollow object. We just make pointer pointing to null.
+And the final thing to made it work and used I add std:: move. to my move constructor. 
+And I used noexcept to enable "optimizations".
+
+My problems.
+I spent a lot of time on chrono functions, to be honest, but after I looked more into documentation it works well. I struggled with the Anonymus structure and after in recordEvent function on how to use it. I looked through google and StackOverflow and  after I found it easy. 
+After I read your email I fixed my Header guard. I didn't put using namespace in my header files. And I tried to did my formatting better. The craziest thing was the getRecord function. You helped me to understand why my code was unlogical correct and we changed me if statement condition.  From int num_stored to unsigned int and after even to size_t.
+An interesting part was in the RecordSet function. I opened the file and read it, after allocating memory for the number of the records I tried to re-read the file and didn't find anything good except two examples with fin.read and fin.seekg (0, is.beg) on cplusplus.com, but they didn't work for me . So I just opened and close the file two times ..

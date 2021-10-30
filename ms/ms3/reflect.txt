@@ -1,0 +1,1 @@
+In this project we repeat almost all the topics(like move and copy semantics, stl containers, algorithms, e.t.c ) from our first and second part of the course. Ms 3 was the hardest part of the project because of constructor, but it all went well. Thank you very much for your classes. And have a great holidays.

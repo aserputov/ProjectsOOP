@@ -1,0 +1,14 @@
+In line number 18 of your output:
+The output should be:
+Student : 25
+^
+But your output is: 
+25 : Student
+^
+
+Unmatched character details:
+The character in column 1 is supposed to be:
+  [S] ASCII code(83)
+but you printed
+  [2] ASCII code(50)
+

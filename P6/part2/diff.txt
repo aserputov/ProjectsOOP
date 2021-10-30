@@ -1,0 +1,14 @@
+In line number 27 of your output:
+The output should be:
+Invalid record!
+^
+But your output is: 
+terminate called after throwing an instance of 'char const*'
+^
+
+Unmatched character details:
+The character in column 1 is supposed to be:
+  [I] ASCII code(73)
+but you printed
+  [t] ASCII code(116)
+

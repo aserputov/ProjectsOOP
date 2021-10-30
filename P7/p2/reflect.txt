@@ -1,0 +1,22 @@
+1.1. For_each STL function. I used this function in my  
+void SongCollection::display(std::ostream& out) const function and
+it will iterate with all element from begin to end and use the same function to all of them. It is much easier to use when loops and easy to implement.
+1.2.Sort STL algorithm. I used this algorithm in my 
+void SongCollection::sort(std::string fl_name)  function to basically sort the elements which were used. I used this to sort for specific statements in my if. It is much easier to sort with built-in function whether by hard coding.
+1.3.Transform STL algorithm. I used this algorithm in my 
+void SongCollection::cleanAlbum() function transform applies the given function to a range and stores the result in another range. It is much easier to use in a few lines of code.
+1.4. Any_of STL algorithm. I used this algorithm in my  
+bool SongCollection::inCollection(std::string art_n) const.
+In this algorithm, we received artist name as a parameter and any_of function compare if the collection of songs have any songs by this artist.
+It is much easier to use build-in function whether to check it with loops.
+1.5.Count_if STL algorithm. I used this algorithm in my  
+ std::list<Song> SongCollection::getSongsForArtist(std::string art_n) const 
+function return number in the range if my parameter of the function matches the collection. And the same as in almost other algorithms it's much easier to use it.
+1.6.Copy_if STL algorithm. I used this algorithm in my 
+ std::list<Song> SongCollection::getSongsForArtist(std::string art_n) const 
+function to copy scope of elements to the collection only if the element met a specific condition. 
+2.  Stl algorithms are much easier to use and it safe us a huge amount of time. We don't need to create complicated functions to test them and code logic for them. We can just use them anywhere anytime, if we will use all these features by hard code it can be a huge program. I find it very similar to JS's language.
+3. To redesign the code we can just use an enum. Create three constants like title, album, length, and if any of the missing we can send an error or if it tries to pass a different type of enum.
+My problems and solution: I had a tough time with constructor because I tried to do it without trim function and after I asked a question in one programming server, guys helped and send me this link so I reduce a lot of lines.
+https://stackoverflow.com/questions/216823/whats-the-best-way-to-trim-stdstring/217605#217605
+And I received a small help with q3 in reflection.

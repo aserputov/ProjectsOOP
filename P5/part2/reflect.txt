@@ -1,0 +1,15 @@
+The difference between the implementations and utilization of a functor and a lambda expression.
+A functor is more complex than lambda.
+Functor requires a separate class.
+If we use it one time on our main it doesn't need a name. Lambda is faster and simpler to use. Functors can be recursive and lambdas can't be. For simple function objects and in easy situations I will use a lambda expression. Functor for more complex situations.
+2.
+In the SpellChecker module in construction I used code as 
+if (!spellcheck) {
+ throw "Bad file name!";
+ } if the user gives us a wrong filename we will throw an exception. To achieve the same result when we receive value we can use the function to return answers depend on the situation of the statement. 
+3. In future maybe, for example, we will want to add Music and we will have a class like Song or maybe we will want to add Shows or anything with a similar logic. With name, country, description and e.t.c. So, in my opinion, I can make a base class, include logic and methods of classes with similar functionality. After just make classes as it's a child.
+4.  In my opinion default constructor is necessary for the main and we can't remove it, because we have a custom constructor in our main module and the compiler will not create a default one for us. We need it to initialize variables with the default constructor.
+My problems: I stuck a little bit in collection.h with operator [] but solve it after then look about it online. And lab4 helped me a lot with my operator +=, it was almost the same logic. Book and Movie were almost the same logic as the lab reservation module too.(I mean receiving info as a string)
+
+
+

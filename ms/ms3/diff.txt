@@ -1,0 +1,14 @@
+In line number 106 of your output:
+The output should be:
+Line Manager Iteration: 1
+^
+But your output is: 
+    Filled Elliott C., Gaming PC [Power Supply]
+^
+
+Unmatched character details:
+The character in column 1 is supposed to be:
+  [L] ASCII code(76)
+but you printed
+  [Space] ASCII code(32)
+
